@@ -9,7 +9,7 @@
             z-index: 10;
         }
         .container {
-            position: relative; 
+            position: relative;
             height: 100vh;
             width: 100vw;
             display: flex;
@@ -22,26 +22,23 @@
             width: 500px;
         }
         video {
-            position: absolute; 
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 5;
         }
-        h1{
+        h1 {
             position: absolute;
-            top: 15%;
+            top: 30%;
             z-index: 100;
-            color: rgb(190, 43, 166);
-            animation: heartbeat 0.6s infinite alternate , changeColor 3s infinite linear;
+            color: rgb(39, 25, 6);
+            animation: heartbeat 1s infinite alternate, changeColor 5s infinite linear;
         }
         .heading{
-            text-align: center;
-            width: 70%;
             position: absolute;
             top: 5%;
             color: black;
-            animation: none;
         }
 
         @keyframes heartbeat {
@@ -49,7 +46,7 @@
                 transform: scale(1);
             }
             to {
-                transform: scale(2);
+                transform: scale(1.1);
             }
         }
 
@@ -64,10 +61,10 @@
                 color: blue;
             }
             50% {
-                color: rgb(198, 39, 204);
+                color: green;
             }
             66.66% {
-                color: rgb(206, 71, 183);
+                color: yellow;
             }
             83.33% {
                 color: orange;
@@ -92,35 +89,51 @@
     <div id="mediaContainer"></div> 
 </body>
 <script>
+    var image144p = new Image();
+    var image240p = new Image();
+    var image360p = new Image();
+    var image720p = new Image();
+    var video4k = document.createElement('video');
+    video4k.src = "./assets/video.mp4";
+
     document.getElementById("moon").addEventListener("change", function() {
         var resolution = this.value;
         var mediaContainer = document.getElementById("mediaContainer");
 
-       
         while (mediaContainer.firstChild) {
             mediaContainer.removeChild(mediaContainer.firstChild);
         }
 
         switch(resolution) {
             case "144p":
+                var img144p = document.createElement("img");
+                img144p.src = "./assets/144p.jpg";
+                mediaContainer.appendChild(img144p);
+                break;
             case "240p":
+                var img240p = document.createElement("img");
+                img240p.src = "./assets/240p.jpg";
+                mediaContainer.appendChild(img240p);
+                break;
             case "360p":
+                var img360p = document.createElement("img");
+                img360p.src = "./assets/360p.jpg";
+                mediaContainer.appendChild(img360p);
+                break;
             case "720p":
-                var img = document.createElement("img");
-                img.src = "./assets/" + resolution + ".jpg";
-                mediaContainer.appendChild(img);
+                var img720p = document.createElement("img");
+                img720p.src = "./assets/720p.jpg";
+                mediaContainer.appendChild(img720p);
                 break;
             case "4K":
-                var video = document.createElement("video");
                 var h2 = document.createElement("h1");
                 h2.innerText = "YOU❤";
-                video.src = "./assets/video.mp4";
-                video.controls = true;
-                video.autoplay = true; 
-                video.loop = true; // 
-                video.controls = false; 
+                video4k.controls = true;
+                video4k.autoplay = true; 
+                video4k.loop = true; 
+                video4k.controls = false; 
                 mediaContainer.appendChild(h2);
-                mediaContainer.appendChild(video);
+                mediaContainer.appendChild(video4k);
                 break;
             default:
                 break;
