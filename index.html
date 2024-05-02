@@ -17,7 +17,7 @@
             align-items: center;
             justify-content: center;
         }
-
+      
         img {
             width: 500px;
         }
@@ -91,12 +91,12 @@
     <div id="mediaContainer"></div> 
 </body>
 <script>
-    var image144p = new Image();
-    var image240p = new Image();
-    var image360p = new Image();
-    var image720p = new Image();
-    var video4k = document.createElement('video');
-    video4k.src = "./assets/video.mp4";
+    // var image144p = new Image();
+    // var image240p = new Image();
+    // var image360p = new Image();
+    // var image720p = new Image();
+    // var video4k = document.createElement('video');
+    // video4k.src = "./assets/video.mp4";
 
     document.getElementById("moon").addEventListener("change", function() {
         var resolution = this.value;
@@ -130,6 +130,8 @@
             case "4K":
                 var h2 = document.createElement("h1");
                 h2.innerText = "YOU❤";
+                var video4k = document.createElement('video');
+                video4k.src = "./assets/video.mp4";
                 video4k.controls = true;
                 video4k.autoplay = true; 
                 video4k.loop = true; 
