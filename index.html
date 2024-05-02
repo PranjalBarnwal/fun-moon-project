@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon</title>
+    <style>
+        select {
+            z-index: 10;
+        }
+        .container {
+            position: relative; 
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            width: 500px;
+        }
+        video {
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            z-index: 5;
+        }
+        h1{
+            position: absolute;
+            top: 15%;
+            z-index: 100;
+            color: rgb(190, 43, 166);
+            animation: heartbeat 0.6s infinite alternate , changeColor 3s infinite linear;
+        }
+        .heading{
+            text-align: center;
+            width: 70%;
+            position: absolute;
+            top: 5%;
+            color: black;
+            animation: none;
+        }
+
+        @keyframes heartbeat {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(2);
+            }
+        }
+
+        @keyframes changeColor {
+            0% {
+                color: violet;
+            }
+            16.66% {
+                color: indigo;
+            }
+            33.33% {
+                color: blue;
+            }
+            50% {
+                color: rgb(198, 39, 204);
+            }
+            66.66% {
+                color: rgb(206, 71, 183);
+            }
+            83.33% {
+                color: orange;
+            }
+            100% {
+                color: red;
+            }
+        }
+    </style>
+</head>
+<body class="container">
+    <h1 class="heading">Moon in different resolutions</h1>
+    <label for="moon">Choose a resolution:</label>
+    <select name="moon" id="moon">
+        <option value=""></option>
+        <option value="144p">144p</option>
+        <option value="240p">240p</option>
+        <option value="360p">360p</option>
+        <option value="720p">720p</option>
+        <option value="4K">4K</option>
+    </select>
+    <div id="mediaContainer"></div> 
+</body>
+<script>
+    document.getElementById("moon").addEventListener("change", function() {
+        var resolution = this.value;
+        var mediaContainer = document.getElementById("mediaContainer");
+
+       
+        while (mediaContainer.firstChild) {
+            mediaContainer.removeChild(mediaContainer.firstChild);
+        }
+
+        switch(resolution) {
+            case "144p":
+            case "240p":
+            case "360p":
+            case "720p":
+                var img = document.createElement("img");
+                img.src = "./assets/" + resolution + ".jpg";
+                mediaContainer.appendChild(img);
+                break;
+            case "4K":
+                var video = document.createElement("video");
+                var h2 = document.createElement("h1");
+                h2.innerText = "YOU❤";
+                video.src = "./assets/video.mp4";
+                video.controls = true;
+                video.autoplay = true; 
+                video.loop = true; // 
+                video.controls = false; 
+                mediaContainer.appendChild(h2);
+                mediaContainer.appendChild(video);
+                break;
+            default:
+                break;
+        }
+    });
+</script>
+</html>
