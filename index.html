@@ -77,6 +77,42 @@
             }
         }
     </style>
+    <script>
+        document.getElementById("moon").addEventListener("change", function() {
+            var resolution = this.value;
+            var mediaContainer = document.getElementById("mediaContainer");
+    
+           
+            while (mediaContainer.firstChild) {
+                mediaContainer.removeChild(mediaContainer.firstChild);
+            }
+    
+            switch(resolution) {
+                case "144p":
+                case "240p":
+                case "360p":
+                case "720p":
+                    var img = document.createElement("img");
+                    img.src = "./assets/" + resolution + ".jpg";
+                    mediaContainer.appendChild(img);
+                    break;
+                case "4K":
+                    var video = document.createElement("video");
+                    var h2 = document.createElement("h1");
+                    h2.innerText = "YOU❤";
+                    video.src = "./assets/video.mp4";
+                    video.controls = true;
+                    video.autoplay = true; 
+                    video.loop = true; // 
+                    video.controls = false; 
+                    mediaContainer.appendChild(h2);
+                    mediaContainer.appendChild(video);
+                    break;
+                default:
+                    break;
+            }
+        });
+    </script>
 </head>
 <body class="container">
     <h1 class="heading">Moon in different resolutions</h1>
@@ -91,40 +127,5 @@
     </select>
     <div id="mediaContainer"></div> 
 </body>
-<script>
-    document.getElementById("moon").addEventListener("change", function() {
-        var resolution = this.value;
-        var mediaContainer = document.getElementById("mediaContainer");
 
-       
-        while (mediaContainer.firstChild) {
-            mediaContainer.removeChild(mediaContainer.firstChild);
-        }
-
-        switch(resolution) {
-            case "144p":
-            case "240p":
-            case "360p":
-            case "720p":
-                var img = document.createElement("img");
-                img.src = "./assets/" + resolution + ".jpg";
-                mediaContainer.appendChild(img);
-                break;
-            case "4K":
-                var video = document.createElement("video");
-                var h2 = document.createElement("h1");
-                h2.innerText = "YOU❤";
-                video.src = "./assets/video.mp4";
-                video.controls = true;
-                video.autoplay = true; 
-                video.loop = true; // 
-                video.controls = false; 
-                mediaContainer.appendChild(h2);
-                mediaContainer.appendChild(video);
-                break;
-            default:
-                break;
-        }
-    });
-</script>
 </html>
